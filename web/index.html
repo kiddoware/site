@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <title>Audio Recorder</title>
+
+    <script src="js/recorderjs/recorder.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.77.0.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="panel panel-info">
+    <div class="panel-body">
+        Please help us improve our wake word recognition service by recoding following Script. Please tap on the mic button below to record and read the script. Once you are done recording, please click to stop button to stop the recording. You can use the play button to review your recording and if it sounds good, tap on submit button to submit the recording for us to train the model. Please note that no personal information is collected and your recording will be complelety anonymoust.
+    </div>
+</div>
+<div class="alert alert-success" id="submittedAlert" role="alert" style="display:none;" >The record was submitted. Thanks!</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="text-center">
+            <button id="recordButton" type="button" class="btn btn-default btn-lg" onclick="toggleRecording(this);">
+                <span class="glyphicon glyphicon glyphicon-record" aria-hidden="true"></span> Record
+            </button>
+            <button id="stopButton" type="button" class="btn btn-default btn-lg" onclick="toggleRecording(this);">
+                <span class="glyphicon glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+            </button>
+            <button id="playButton" type="button" class="btn btn-default btn-lg" onclick="play()">
+                <span class="glyphicon glyphicon glyphicon-play" aria-hidden="true"></span> Play
+            </button>
+            <button id="stopPlaybackButton" type="button" class="btn btn-default btn-lg" onclick="stopPlay();">
+                <span class="glyphicon glyphicon glyphicon-stop" aria-hidden="true"></span> Stop Playback
+            </button>
+            <button id="submitButton" type="button" class="btn btn-default btn-lg" onclick="submitToS3();">
+                <span class="glyphicon glyphicon glyphicon-send" aria-hidden="true"></span> Submit
+            </button>
+        </div>
+    </div>
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Script</h3>
+    </div>
+    <div class="panel-body text-center">
+        Buddy Buddy</br>
+        Quack Quack</br>
+        Hello-Buddy</br>
+        Gobble Gobble</br>
+        Hello-Buddy</br>
+        Blah Blah</br>
+
+        Bobby Bobby</br>
+        Quack Quack</br>
+        Hello-Bobby</br>
+        Gobble Gobble</br>
+        Hello-Bobby</br>
+        Blah Blah</br>
+
+        Baxter Baxter</br>
+        Quack Quack</br>
+        Hello-Baxter</br>
+        Gobble Gobble</br>
+        Hello-Baxter</br>
+        Blah Blah</br>
+
+        Mr Dexter Mr Dexter</br>
+        Quack Quack</br>
+        Hello-Dexter</br>
+        Gobble Gobble</br>
+        Hello-Dexter</br>
+        Blah Blah</br>
+    </div>
+</div>
+</body>
+</html>
